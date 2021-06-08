@@ -1,0 +1,101 @@
+header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 20;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  height: 70px;
+  background-color: rgba(92, 173, 189, 0.397);
+}
+
+nav ul {
+  position: absolute;
+  display: inline;
+  list-style: none;
+  padding: 1.5rem 0 1.5rem 0;
+  margin: 0;
+}
+
+nav ul li {
+  display: inline;
+  font-size: 1.1rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+  margin: 1rem;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Submmenu */
+
+.submenu {
+  position: relative;
+  cursor: default;
+}
+
+.submenu ul {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: rgba(92, 173, 189, 0.397);
+  padding: 1rem;
+}
+
+.submenu span {
+  margin: 1rem;
+}
+
+.submenu:hover ul {
+  display: block;
+}
+
+.submenu ul li {
+  display: block;
+  position: relative;
+  margin: 5px 15px 10px 10px;
+}
+
+.submenu ul li a {
+  margin: 0;
+}
+
+/* Logo */
+
+.logo {
+  display: inline-block;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+@media screen and (max-width: 650px) {
+  .logo {
+    display: none;
+  }
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 50px;
+}
+
+.logo a {
+  text-decoration: none;
+  color: rgb(0 114 225);
+}
+
+.logo-brand {
+  font-weight: bold;
+}

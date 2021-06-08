@@ -1,0 +1,15 @@
+.list {
+  margin: 2rem 0;
+}
+
+.list p {
+  font-weight: bold;
+  margin: 1rem;
+}
+
+.list-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(226, 226, 226, 0.76);
+}

@@ -1,14 +1,15 @@
+html {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   background-color: rgb(245, 245, 245);
   height: 1200px;
 }
 
-h1 {
-  text-align: center;
-}
-
 .container {
+  position: relative;
   display: block;
   max-width: 1200px;
   padding-left: 1rem;
@@ -16,61 +17,6 @@ h1 {
   margin: auto;
 }
 
-header {
-  position: fixed;
-  left: 0;
-  right: 0;
-}
-
-nav {
-  position: sticky;
-  top: 0;
-  height: 50px;
-  background-color: rgb(231, 231, 231);
-}
-
-ul {
-  position: absolute;
-  display: inline;
-  right: 0;
-  list-style: none;
-  padding: 1rem;
-  margin: 0;
-}
-
-ul li {
-  display: inline;
-}
-
-ul li a {
-  text-decoration: none;
-  color: black;
-  margin: 1rem;
-}
-
-ul li a:hover {
-  text-decoration: underline;
-}
-
-.logo {
-  display: inline;
-}
-
-@media screen and (max-width: 374px) {
-  .logo {
-    display: none;
-  }
-}
-
-.logo img {
-  width: 50px;
-}
-
 main {
   padding-top: 50px;
-}
-
-main img {
-  display: block;
-  margin: auto;
 }
