@@ -1,15 +1,19 @@
 import React, { Component, Fragment } from "react";
 import "./App.css";
-import Header from "./components/Header/Header";
-import List from "./components/ItemListContainer/List"
+import NavBar from "./components/NavBar/NavBar";
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import Footer from "./components/Footer/Footer"
 class App extends Component {
   render() {
     return (
       <>
-        <Header />
+        <header>
+          <NavBar brand={'Marca'}/>
+        </header>
         <main>
-        <List greeting={'Acá va el listado de ítems'}/>
+        <ItemListContainer />
         </main>
+        <Footer />
       </>
     );
   }

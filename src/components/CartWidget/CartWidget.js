@@ -1,12 +1,11 @@
-
 import React from 'react'
-import {BiCart} from "react-icons/bi"
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import "./CartWidget.css"
 
 function CartWidget() {
     return (
         <a href="index.html">
-            <BiCart className="cart-widget"style={{fontSize:"2.5rem"}}/>
+            <ShoppingCartOutlinedIcon className="cart-widget" fontSize="large"/>
         </a>
     )
 }
