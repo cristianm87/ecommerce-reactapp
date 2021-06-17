@@ -8,10 +8,5 @@
 }
 
 .item-list-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: row;
-  background-color: rgba(226, 226, 226, 0.76);
+  background-color: var(--theme-color);
 }

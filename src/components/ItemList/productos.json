@@ -1,0 +1,37 @@
+[
+    {
+        "tipo":"Notebook",
+        "marca":"Hp",
+        "modelo":"Xr156",
+        "precio":150000,
+        "img":"./img/notebook.png"
+    },
+    {
+        "tipo":"Monitor",
+        "marca":"Samsung",
+        "modelo":"R24",
+        "precio":80000,
+        "img":"./img/monitor.png"
+    },
+    {
+        "tipo":"Tv",
+        "marca":"Lg",
+        "modelo":"Vr50",
+        "precio":200000,
+        "img":"./img/tv.png"
+    },
+    {
+        "tipo":"Teclado",
+        "marca":"Logitech",
+        "modelo":"Kgm",
+        "precio":30000,
+        "img":"./img/keyboard.png"
+    },
+    {
+        "tipo":"Mouse",
+        "marca":"Logitech",
+        "modelo":"M360",
+        "precio":25000,
+        "img":"./img/mouse.png"
+    } 
+]

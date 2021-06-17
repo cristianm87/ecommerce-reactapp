@@ -1,42 +1,36 @@
-import React, {Component, Fragment} from "react"
+import React, { useState } from "react"
 import Button from '@material-ui/core/Button'
 
-class ItemCount extends Component {
-    constructor() {
-        super();
-        this.state = {
-            count: 0
+function ItemCount() {
+    
+    const [number, setNumber] = useState(0)
+
+    const handleCounterUp = () => {
+        setNumber(number + 1)
+    }
+
+    const handleCounterDown = () => {
+        if (number > 0) {
+            setNumber(number - 1)            
         }
     }
 
-    handleCounterUp = () => {
-        this.setState({ count: this.state.count + 1})
-    }
-    handleCounterDown = () => {
-        if (this.state.count > 0) {
-            this.setState({ count: this.state.count - 1})
-        }
-        
-    }
-
-    render() {
-        return (
-            <>
-                <div>
-                    Cantidad:
-                    {this.state.count}
-                </div>  
-                <div>
-                    <Button onClick={this.handleCounterUp} variant="contained" color="primary">
-                        +
-                    </Button>
-                    <Button onClick={this.handleCounterDown} variant="contained" color="secondary">
-                        -
-                    </Button>
-                </div>
-            </>
-        );
-    }
+    return (
+        <>
+            <div>
+                Cantidad:
+                {number}
+            </div>  
+            <div>
+                <Button onClick={handleCounterUp} variant="contained" color="primary">
+                    +
+                </Button>
+                <Button onClick={handleCounterDown} variant="contained" color="secondary">
+                    -
+                </Button>
+            </div>
+        </>
+    )
 }
 
-export default ItemCount;
+export default ItemCount
