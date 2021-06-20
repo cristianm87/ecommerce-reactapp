@@ -1,16 +1,38 @@
 import React, { useState } from "react"
 import Button from '@material-ui/core/Button'
+import { makeStyles } from '@material-ui/core/styles';
+import './ItemCount.css'
 
-function ItemCount() {
+// MAKESTYLES PARA MATERIAL UI
+const useStyles = makeStyles({
+    btnAddToCart: {
+        backgroundColor: '#f5e73d',
+        '&:hover': {
+            backgroundColor:'gold'
+        },
+        margin: 5
+    },
+    btnMoreLess: {
+        margin: 5
+    }
+});
+
+
+function ItemCount({stock, initial, onAdd}) {
+    const classes = useStyles()
     
-    const [number, setNumber] = useState(0)
+    const [number, setNumber] = useState(initial)
 
     const handleCounterUp = () => {
-        setNumber(number + 1)
+        if (number < stock){
+            setNumber(number + 1)
+        } else {
+        }
+        
     }
 
     const handleCounterDown = () => {
-        if (number > 0) {
+        if (number > 1) {
             setNumber(number - 1)            
         }
     }
@@ -18,16 +40,16 @@ function ItemCount() {
     return (
         <>
             <div>
-                Cantidad:
-                {number}
-            </div>  
-            <div>
-                <Button onClick={handleCounterUp} variant="contained" color="primary">
+                <Button onClick={handleCounterUp} className={classes.btnMoreLess} variant="contained" color="primary" size="small">
                     +
                 </Button>
-                <Button onClick={handleCounterDown} variant="contained" color="secondary">
+                <span className="item-count-number">{number}</span>
+                <Button onClick={handleCounterDown} className={classes.btnMoreLess} variant="contained" color="secondary" size="small">
                     -
                 </Button>
+            </div>
+            <div>
+                <Button onClick={()=>onAdd(number)} className={classes.btnAddToCart} variant="contained" size="small">Agregar al carrito</Button>
             </div>
         </>
     )
