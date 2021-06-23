@@ -38,7 +38,7 @@ function ItemCount({stock, initial, onAdd}) {
     }
 
     return (
-        <>
+        <div className="item-count">
             <div>
                 <Button onClick={handleCounterUp} className={classes.btnMoreLess} variant="contained" color="primary" size="small">
                     +
@@ -51,7 +51,7 @@ function ItemCount({stock, initial, onAdd}) {
             <div>
                 <Button onClick={()=>onAdd(number)} className={classes.btnAddToCart} variant="contained" size="small">Agregar al carrito</Button>
             </div>
-        </>
+        </div>
     )
 }
 

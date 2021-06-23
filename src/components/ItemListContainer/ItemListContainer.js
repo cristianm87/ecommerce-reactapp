@@ -12,12 +12,12 @@ function ItemListContainer() {
     return (
         <section className="item-list-container">
             <div className="container">
-                <section className="item-list-container-wrapper">
+                <div className="item-list-container-wrapper">
                     <section className="borrar">
                         <ItemCount onAdd={onAdd} stock={5} initial={1} />
                     </section>
                     <ItemList />
-                </section>
+                </div>
             </div>
         </section>
     )

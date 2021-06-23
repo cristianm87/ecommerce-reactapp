@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Item from '../Item/Item';
 import './ItemList.css';
+import axios from 'axios';
+
+// Link Router Dom
+import { Link } from 'react-router-dom'
 
 function ItemList() {
     const [products, setProducts] = useState([])
@@ -11,25 +15,26 @@ function ItemList() {
         // setTimeout(() => {
         //     console.log("Hello")
         // }, 2000)
-        fetch(
-            'https://api.github.com/users'
-            )
-            .then((res) => res.json())
-            .then((dataApi) => setProducts(dataApi));
+
+        axios.get('https://api.github.com/users').then((res) => setProducts(res.data));
     }, []);
+
+    products.length = 8;
 
     return (
         <ul>
-            {products.map((producto) => {
+            {products.map((product) => {
                 return (
-                    <li key={producto.id}>
-                        <Item img={producto.avatar_url} login={producto.login} id={producto.id} github={producto.html_url}/>
+                    <li key={product.id}>
+                        <Link to={`/detail/${product.login}`}>
+                            <Item products={product} />
+                        </Link>
+                        
                     </li>
                 )
             })}
         </ul>
     )
 }
-
 export default ItemList;
 

@@ -1,0 +1,10 @@
+.item-detail-container {
+  margin: 2rem 0;
+}
+
+.item-detail-container-wrapper {
+  background-color: var(--theme-color);
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}

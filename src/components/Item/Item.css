@@ -24,6 +24,11 @@
   height: auto;
 }
 
+.card-body p {
+  margin: 1rem;
+  font-weight: bold;
+}
+
 .card-amount {
   display: flex;
   flex-direction: column;
