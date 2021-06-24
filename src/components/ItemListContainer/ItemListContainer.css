@@ -3,7 +3,7 @@
 }
 
 .item-list-container-wrapper {
-  background-color: var(--theme-color);
+  background: var(--bg-color);
   display: flex; /*borrar display flex*/
   flex-direction: column;
 }

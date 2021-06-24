@@ -25,6 +25,7 @@
 }
 
 .card-body p {
+  color: var(--text-color);
   margin: 1rem;
   font-weight: bold;
 }

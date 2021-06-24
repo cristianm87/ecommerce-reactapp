@@ -4,8 +4,8 @@ footer {
   align-items: center;
   margin-top: auto;
   height: 60px;
-  background-color: var(--theme-color);
-  color: black;
+  background: var(--bg-color);
+  color: var(--text-color);;
   font-size: 1.5rem;
 }
 

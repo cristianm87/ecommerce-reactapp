@@ -7,11 +7,18 @@ html {
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  --theme-color: rgba(219, 179, 179, 0.795);
+  --bg-color: linear-gradient(
+    90deg,
+    rgba(6, 40, 0, 1) 4%,
+    rgba(53, 116, 28, 1) 25%,
+    rgba(128, 159, 36, 1) 50%,
+    rgba(53, 116, 28, 1) 75%,
+    rgba(0, 38, 7, 1) 97%
+  );
+  --text-color: rgb(255, 255, 255);
 }
 
 body {
-  text-align: center;
   height: 100%;
   margin: 0;
   background-color: rgb(250, 250, 250);

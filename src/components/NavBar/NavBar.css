@@ -5,7 +5,7 @@
 
 nav {
   height: 70px;
-  background-color: var(--theme-color);
+  background: var(--bg-color);
   z-index: 20;
 }
 
@@ -21,7 +21,7 @@ nav ul .link {
 
 nav ul .link {
   text-decoration: none;
-  color: black;
+  color: var(--text-color);
   margin: 1rem;
 }
 
@@ -40,7 +40,7 @@ nav ul .link:hover {
   display: none;
   position: absolute;
   left: 0;
-  background-color: rgb(124, 255, 200);
+  background: var(--bg-color);
   padding: 1rem;
 }
 
