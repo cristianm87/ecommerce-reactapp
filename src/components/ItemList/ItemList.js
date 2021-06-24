@@ -19,7 +19,7 @@ function ItemList() {
         axios.get('https://www.breakingbadapi.com/api/characters').then((res) => setProducts(res.data));
     }, []);
 
-    // products.length = 38;
+    products.length = 38;
 
     return (
         <ul>

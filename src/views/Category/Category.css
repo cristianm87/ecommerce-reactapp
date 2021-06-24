@@ -1,3 +1,4 @@
-.category-1 {
+.category {
   text-align: center;
+  background: var(--bg-color);
 }

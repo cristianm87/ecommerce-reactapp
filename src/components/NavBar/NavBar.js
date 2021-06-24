@@ -22,9 +22,9 @@ function NavBar({ brand }) {
                     <li className="link submenu">
                         <span>Categories</span>
                         <ul>
-                            <Link className="link" to="/category">Category 1</Link>
-                            <a href="/" className="link">Second</a>
-                            <a href="/" className="link">Third</a>
+                            <Link className="link" to="/category/1">Category 1</Link>
+                            <Link className="link" to="/category/2">Category 2</Link>
+                            <Link className="link" to="/category/3">Category 3</Link>
                         </ul>
                     </li>
                     <Link className="link" to="/contact">Contact</Link>

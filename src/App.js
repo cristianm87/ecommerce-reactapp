@@ -8,8 +8,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './views/Home/Home'
 import About from './views/About/About'
 import Contact from './views/Contact/Contact'
-import ItemDetailContainer from "./views/ItemDetailContainer/ItemDetailContainer";
 import Category from './views/Category/Category';
+import ItemDetailContainer from "./views/ItemDetailContainer/ItemDetailContainer";
+
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         <Route path='/' exact component={Home} />
         <Route path="/about" component={About} />
         <Route path='/contact' component={Contact} />
-        <Route path='/category' component={Category} />
+        <Route path='/category/:id' component={Category} />
         <Route path="/detail/:id" component={ItemDetailContainer} />
       </Switch>
       <Footer />
