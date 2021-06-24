@@ -20,9 +20,9 @@ function NavBar({ brand }) {
                     <Link className="link" to="/">Home</Link>
                     <Link className="link" to="/about">About</Link>
                     <li className="link submenu">
-                        <span>Dropdown</span>
+                        <span>Categories</span>
                         <ul>
-                            <a href="/" className="link">First</a>
+                            <Link className="link" to="/category">Category 1</Link>
                             <a href="/" className="link">Second</a>
                             <a href="/" className="link">Third</a>
                         </ul>

@@ -9,6 +9,7 @@ import Home from './views/Home/Home'
 import About from './views/About/About'
 import Contact from './views/Contact/Contact'
 import ItemDetailContainer from "./views/ItemDetailContainer/ItemDetailContainer";
+import Category from './views/Category/Category';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/' exact component={Home} />
         <Route path="/about" component={About} />
         <Route path='/contact' component={Contact} />
+        <Route path='/category' component={Category} />
         <Route path="/detail/:id" component={ItemDetailContainer} />
       </Switch>
       <Footer />

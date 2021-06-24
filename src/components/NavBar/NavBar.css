@@ -42,6 +42,7 @@ nav ul .link:hover {
   left: 0;
   background: var(--bg-color);
   padding: 1rem;
+  width: 100%;
 }
 
 .submenu span {
@@ -59,7 +60,7 @@ nav ul .link:hover {
 .submenu ul .link {
   display: block;
   position: relative;
-  margin: 5px 15px 10px 10px;
+  margin: 5px 65px 10px 10px;
 }
 
 .submenu ul .link {
