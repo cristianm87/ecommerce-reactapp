@@ -6,3 +6,7 @@ ul li {
   display: inline-block;
   margin: 1rem;
 }
+
+.item-list-link {
+  text-decoration: none;
+}

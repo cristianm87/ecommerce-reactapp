@@ -3,28 +3,32 @@ import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+// import NavBarAlt from "./components/NavBarAlt/NavBarAlt";
 
 //VIEWS
 import Home from './views/Home/Home'
 import About from './views/About/About'
 import Contact from './views/Contact/Contact'
-import Category from './views/Category/Category';
+import Categories from './views/Categories/Categories';
 import ItemDetailContainer from "./views/ItemDetailContainer/ItemDetailContainer";
-
+import { ItemsProvider } from "./CartContext"; //CartContext
 
 function App() {
   return (
-    <Router>
-      <NavBar brand={'Marca'} />
-      <Switch>
-        <Route path='/' exact component={Home} />
-        <Route path="/about" component={About} />
-        <Route path='/contact' component={Contact} />
-        <Route path='/category/:id' component={Category} />
-        <Route path="/detail/:id" component={ItemDetailContainer} />
-      </Switch>
-      <Footer />
-    </Router>
+    <ItemsProvider> {/*CardContext*/}
+      <Router>
+        <NavBar brand={'Marca'} />
+        {/* <NavBarAlt /> */}
+        <Switch>
+          <Route path='/' exact component={Home} />
+          <Route path="/about" component={About} />
+          <Route path='/contact' component={Contact} />
+          <Route path='/category/:id' component={Categories} />
+          <Route path="/item/:id" component={ItemDetailContainer} />
+        </Switch>
+        <Footer />
+      </Router>
+    </ItemsProvider>
   );
 }
 

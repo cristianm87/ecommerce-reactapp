@@ -10,13 +10,14 @@ const useStyles = makeStyles({
         '&:hover': {
             backgroundColor:'gold'
         },
+        marginTop: 30,
         margin: 5
     },
     btnMoreLess: {
-        margin: 5
+        margin: 5,
+        fontSize: 18
     }
 });
-
 
 function ItemCount({stock, initial, onAdd}) {
     const classes = useStyles()
@@ -39,11 +40,13 @@ function ItemCount({stock, initial, onAdd}) {
 
     return (
         <div className="item-count">
-            <div>
+            <div className="item-count-wrapper">
                 <Button onClick={handleCounterUp} className={classes.btnMoreLess} variant="contained" color="primary" size="small">
                     +
                 </Button>
-                <span className="item-count-number">{number}</span>
+                <div className="item-count-number-wrapper">
+                    <span className="item-count-number">{number}</span>
+                </div>
                 <Button onClick={handleCounterDown} className={classes.btnMoreLess} variant="contained" color="secondary" size="small">
                     -
                 </Button>

@@ -5,27 +5,24 @@ import ItemDetail from '../../components/ItemDetail/ItemDetail';
 import './ItemDetailContainer.css'
 
 function ItemDetailContainer({ match }) {
-    console.log('MATCH', match)
-    console.log('ID', match.params.id)
+    // console.log('MATCH', match)
+    let charId = parseInt(match.params.id)
 
-    let charId = match.params.id
-    const [user, setUser] = useState([])
-
+    const [item, setItem] = useState([])
+    
     useEffect(() => {
-        axios.get(`https://www.breakingbadapi.com/api/characters/${charId}`).then((res) => setUser(res.data))
+        axios.get(`../../data/productos.json`).then((res) => setItem(res.data.filter((element) => element.id === charId)));
     }, [charId]);
 
     return (
         <section className="item-detail-container">
             <div className="container">
-                <h1>Item Detail Container</h1>
-                <div className="item-detail-container-wrapper">
-                    <ItemDetail product={user} />
+                <h1>Detalles del Producto</h1>
+                <div className="item-detail-wrapper">
+                    <ItemDetail product={item} />
                 </div>
             </div>
         </section>
-
-
     )
 }
 

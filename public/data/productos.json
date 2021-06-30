@@ -1,0 +1,123 @@
+[
+    {   
+        "id":1,
+        "categoria":"Notebooks",
+        "marca":"Hp",
+        "modelo":"Xr156",
+        "shortDescription": "Notebook Hp i3 14\"",
+        "longDescription": "Esta es una description larga del producto, con informacion mas detallada y precisa de las caracteristicas del item mostrado",
+        "precio":150000,
+        "img":"../images/notebook.png"
+    },
+    {
+        "id":2,
+        "categoria":"Monitores",
+        "marca":"Samsung",
+        "modelo":"R24",
+        "shortDescription": "Monitor Samsung 24\"",
+        "longDescription": "Esta es una description larga del producto, con informacion mas detallada y precisa de las caracteristicas del item mostrado",
+        "precio":80000,
+        "img":"../images/monitor.png"
+    },
+    {
+        "id":3,
+        "categoria":"Tv",
+        "marca":"Lg",
+        "modelo":"Vr50",
+        "shortDescription": "Tv Smart Lg 50\"",
+        "longDescription": "Esta es una description larga del producto, con informacion mas detallada y precisa de las caracteristicas del item mostrado",
+        "precio":200000,
+        "img":"../images/tv.png"
+    },
+    {
+        "id":4,
+        "categoria":"Teclados",
+        "marca":"Logitech",
+        "modelo":"Kgm",
+        "shortDescription": "Teclado Logitech Mecanico",
+        "longDescription": "Esta es una description larga del producto, con informacion mas detallada y precisa de las caracteristicas del item mostrado",
+        "precio":30000,
+        "img":"../images/keyboard-logitech.png"
+    },
+    {
+        "id":5,
+        "categoria":"Mouse",
+        "marca":"Iris",
+        "modelo":"M360",
+        "shortDescription": "Mouse Iris",
+        "longDescription": "Esta es una description larga del producto, con informacion mas detallada y precisa de las caracteristicas del item mostrado",
+        "precio": 5000,
+        "img":"../images/mouse.png"
+    }, 
+    {   
+        "id":6,
+        "categoria":"Notebooks",
+        "marca":"Aorus",
+        "modelo":"FGH88",
+        "shortDescription": "Notebook Aorus 15\"",
+        "longDescription": "Esta es una description larga del producto, con informacion mas detallada y precisa de las caracteristicas del item mostrado",
+        "precio":120000,
+        "img":"../images/notebook-aorus.png"
+    },
+    {
+        "id":7,
+        "categoria":"Monitores",
+        "marca":"Gigabyte",
+        "modelo":"Ultra-Wide",
+        "shortDescription":"Monitor Gigabyte Ultra-Wide",
+        "longDescription": "Esta es una description larga del producto, con informacion mas detallada y precisa de las caracteristicas del item mostrado",
+        "precio":90000,
+        "img":"../images/monitor-gigabyte.png"
+    },
+    {
+        "id":8,
+        "categoria":"Tv",
+        "marca":"Philips",
+        "modelo":"40HR",
+        "shortDescription": "Tv Smart Philips 40\"",
+        "longDescription": "Esta es una description larga del producto, con informacion mas detallada y precisa de las caracteristicas del item mostrado",
+        "precio":180000,
+        "img":"../images/tv-philips.png"
+    },
+    {
+        "id":9,
+        "categoria":"Teclados",
+        "marca":"Corsair",
+        "modelo":"K500",
+        "shortDescription": "Teclado Corsair Retroiluminado",
+        "longDescription": "Esta es una description larga del producto, con informacion mas detallada y precisa de las caracteristicas del item mostrado",
+        "precio":20000,
+        "img":"../images/keyboard-corsair.png"
+    },
+    {
+        "id":10,
+        "categoria":"Mouse",
+        "marca":"Redragon",
+        "modelo":"R28i",
+        "shortDescription": "Mouse Gamer Redragon",
+        "longDescription": "Esta es una description larga del producto, con informacion mas detallada y precisa de las caracteristicas del item mostrado",
+        "precio":20000,
+        "img":"../images/mouse-redragon.png"
+    },
+    {
+        "id":11,
+        "categoria":"Mouse",
+        "marca":"Logitech",
+        "modelo":"TT360",
+        "shortDescription": "Mouse Gamer Logitech",
+        "longDescription": "Esta es una description larga del producto, con informacion mas detallada y precisa de las caracteristicas del item mostrado",
+        "precio":20000,
+        "img":"../images/mouse-tt.png"
+    },
+    {
+        "id":12,
+        "categoria":"Mouse",
+        "marca":"TT",
+        "modelo":"R28i",
+        "shortDescription": "Mouse Gamer TT",
+        "longDescription": "Esta es una description larga del producto, con informacion mas detallada y precisa de las caracteristicas del item mostrado",
+        "precio":20000,
+        "img":"../images/mouse-4.png"
+    }
+    
+]

@@ -1,32 +1,115 @@
-import React from 'react'
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import clsx from 'clsx';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Collapse from '@material-ui/core/Collapse';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import { red } from '@material-ui/core/colors';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import './ItemDetail.css'
+import ItemCount from '../ItemCount/ItemCount'
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        maxWidth: 445,
+        minWidth: 380,
+        padding: 10,
+        background:'var(--bg-card)'
+    },
+    media: {
+        height: 50,
+        paddingTop: '56.25%', // 16:9
+    },
+    expand: {
+        transform: 'rotate(0deg)',
+        marginLeft: 'auto',
+        transition: theme.transitions.create('transform', {
+            duration: theme.transitions.duration.shortest,
+        }),
+    },
+    expandOpen: {
+        transform: 'rotate(180deg)',
+    },
+    avatar: {
+        backgroundColor: red[500],
+    },
+}));
 
 function ItemDetail({ product }) {
     console.log('item detail', product)
+    //ItemCount
+    const onAdd=(cantidad) => {
+        console.log('agregar al carrito', cantidad)
+    }
+
+    const classes = useStyles();
+
+    const [expanded, setExpanded] = React.useState(false);
+
+    const handleExpandClick = () => {
+        setExpanded(!expanded);
+    };
     return (
         <>
+        {product.length === 0 ? (
+            <h1>Cargando...</h1>
+        ) : (
+            <>
             {product.map((x) => {
                 return (
-                    <article key={x.char_id} className="card">
-                        <div className="card-wrapper">
-                            <div className="card-img">
-                                <img src={x.img} alt="img" />
-                            </div>
-                            <div className="card-body">
-                                <p>Name: {x.name}</p>
-                                <p>Nickname: {x.nickname}</p>
-                                <p>Birthday: {x.birthday}</p >
-                                <p>Occupation: {x.occupation}</p>
-                                <p></p>
-                                {/* <p>Gihub:</p> */}
-                                {/* <a href={product.html_url} target='_blank' rel="noopener noreferrer"><p>{product.html_url}</p></a> */}
-                            </div>
-                            <div className="card-amount">
-                            </div>
+                <Card key={x.id} className={classes.root}>
+                    <CardHeader
+                        title={x.shortDescription}
+                        subheader=" "
+                    />
+                    <CardMedia
+                        className={classes.media}
+                        image={x.img}
+                        title=""
+                    />
+                    <CardContent> 
+                        <div className="card-amount">
+                            <ItemCount onAdd={onAdd} stock={5} initial={1}/>
                         </div>
-                    </article>
+                    </CardContent>
+                    <CardActions disableSpacing>
+                        <IconButton aria-label="add to favorites">
+                            <FavoriteIcon />
+                        </IconButton>
+                        <IconButton aria-label="share">
+                            <ShareIcon />
+                        </IconButton>
+                        <IconButton
+                            className={clsx(classes.expand, {
+                                [classes.expandOpen]: expanded,
+                            })}
+                            onClick={handleExpandClick}
+                            aria-expanded={expanded}
+                            aria-label="show more"
+                        >
+                        <ExpandMoreIcon />
+                        </IconButton>
+                    </CardActions>
+                    <Collapse in={expanded} timeout="auto" unmountOnExit>
+                        <CardContent>
+                            <Typography paragraph>Más detalles</Typography>
+                            <Typography paragraph>
+                                {x.longDescription}
+                            </Typography>
+                        </CardContent>
+                    </Collapse>
+                </Card>
                 );
-            })}
+            })}</>
+            )
+        }
         </>
     )
 }

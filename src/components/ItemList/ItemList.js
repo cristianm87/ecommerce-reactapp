@@ -16,20 +16,17 @@ function ItemList() {
         //     console.log("Hello")
         // }, 2000)
 
-        axios.get('https://www.breakingbadapi.com/api/characters').then((res) => setProducts(res.data));
+        axios.get('../../data/productos.json').then((res) => setProducts(res.data));
     }, []);
-
-    products.length = 38;
 
     return (
         <ul>
             {products.map((product) => {
                 return (
-                    <li key={product.char_id}>
-                        <Link to={`/detail/${product.char_id}`}>
+                    <li key={product.id}>
+                        <Link className="item-list-link" to={`/item/${product.id}`}>
                             <Item products={product} />
                         </Link>
-
                     </li>
                 )
             })}
