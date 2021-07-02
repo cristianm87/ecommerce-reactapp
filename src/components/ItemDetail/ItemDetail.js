@@ -46,6 +46,7 @@ function ItemDetail({ product }) {
     console.log('item detail', product)
     //ItemCount
     const onAdd=(cantidad) => {
+        console.log()
         console.log('agregar al carrito', cantidad)
     }
 
@@ -56,6 +57,7 @@ function ItemDetail({ product }) {
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+
     return (
         <>
         {product.length === 0 ? (
@@ -74,9 +76,16 @@ function ItemDetail({ product }) {
                         image={x.img}
                         title=""
                     />
+                    <CardContent>
+                        <Typography variant="subtitle1" color="initial" component="p">
+                            Precio: ${x.precio}<br/>
+                            Marca: {x.marca}<br/>
+                            Modelo: {x.modelo}
+                        </Typography>
+                    </CardContent>
                     <CardContent> 
                         <div className="card-amount">
-                            <ItemCount onAdd={onAdd} stock={5} initial={1}/>
+                            <ItemCount onAdd={onAdd} stock={5} initial={1} item={x}/>
                         </div>
                     </CardContent>
                     <CardActions disableSpacing>

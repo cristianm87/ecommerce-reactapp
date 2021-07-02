@@ -22,7 +22,7 @@ function Categories() {
 
         axios.get('../../data/productos.json').then((res) => setProducts(res.data.filter((element) => element.categoria.toLowerCase() === id )));
     }, [id]);
-console.log(products)
+    console.log(products)
     return (
         <section className="categories-container">
             <div className="container">

@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles';
 import './ItemCount.css'
+import { Link } from "react-router-dom";
 
 // MAKESTYLES PARA MATERIAL UI
 const useStyles = makeStyles({
@@ -19,20 +20,22 @@ const useStyles = makeStyles({
     }
 });
 
-function ItemCount({stock, initial, onAdd}) {
+function ItemCount({stock, initial, onAdd, item}) {
     const classes = useStyles()
+    console.log(item)
+
     
     const [number, setNumber] = useState(initial)
 
-    const handleCounterUp = () => {
+
+    const sumUno = () => {
         if (number < stock){
             setNumber(number + 1)
-        } else {
+            
         }
-        
     }
 
-    const handleCounterDown = () => {
+    const restaUno = () => {
         if (number > 1) {
             setNumber(number - 1)            
         }
@@ -41,18 +44,20 @@ function ItemCount({stock, initial, onAdd}) {
     return (
         <div className="item-count">
             <div className="item-count-wrapper">
-                <Button onClick={handleCounterUp} className={classes.btnMoreLess} variant="contained" color="primary" size="small">
+                <Button onClick={sumUno} className={classes.btnMoreLess} variant="contained" color="primary" size="small">
                     +
                 </Button>
                 <div className="item-count-number-wrapper">
                     <span className="item-count-number">{number}</span>
                 </div>
-                <Button onClick={handleCounterDown} className={classes.btnMoreLess} variant="contained" color="secondary" size="small">
+                <Button onClick={restaUno} className={classes.btnMoreLess} variant="contained" color="secondary" size="small">
                     -
                 </Button>
             </div>
             <div>
-                <Button onClick={()=>onAdd(number)} className={classes.btnAddToCart} variant="contained" size="small">Agregar al carrito</Button>
+                <Link to="/cart">
+                    <Button onClick={()=>onAdd(number)} className={classes.btnAddToCart} variant="contained" size="small">Agregar al carrito</Button>
+                </Link>
             </div>
         </div>
     )
