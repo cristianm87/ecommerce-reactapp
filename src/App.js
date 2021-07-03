@@ -12,6 +12,7 @@ import Contact from './views/Contact/Contact'
 import Categories from './views/Categories/Categories';
 import ItemDetailContainer from "./views/ItemDetailContainer/ItemDetailContainer";
 import { ItemsProvider } from "./CartContext"; //CartContext
+import Cart from "./views/Cart/Cart";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path='/contact' component={Contact} />
           <Route path='/category/:id' component={Categories} />
           <Route path="/item/:id" component={ItemDetailContainer} />
+          <Route path="/cart" component={Cart} />
         </Switch>
         <Footer />
       </Router>

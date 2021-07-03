@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -44,10 +44,14 @@ const useStyles = makeStyles((theme) => ({
 
 function ItemDetail({ product }) {
     console.log('item detail', product)
+
+    const [btnComprar, setTest] = useState(false)
+
     //ItemCount
     const onAdd=(cantidad) => {
-        console.log()
         console.log('agregar al carrito', cantidad)
+        setTest(true);
+
     }
 
     const classes = useStyles();
@@ -85,7 +89,7 @@ function ItemDetail({ product }) {
                     </CardContent>
                     <CardContent> 
                         <div className="card-amount">
-                            <ItemCount onAdd={onAdd} stock={5} initial={1} item={x}/>
+                            <ItemCount onAdd={onAdd} stock={5} initial={1} item={x} btnComprar={btnComprar}/>
                         </div>
                     </CardContent>
                     <CardActions disableSpacing>
