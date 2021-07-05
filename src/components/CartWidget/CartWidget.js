@@ -5,15 +5,13 @@ import "./CartWidget.css"
 import { Link } from 'react-router-dom';
 
 
-function CartWidget() {
-
-    const [state, setState] = useContext(CartContext)
+function CartWidget() {    
     return (
         <div className="cart-widget-container">
             <Link to="/cart">
                 <ShoppingCartOutlinedIcon className="cart-widget" fontSize="large"/>
             </Link>
-            <span style={{'color':'red'}}>Items: {state}</span>            
+            <span style={{'color':'red'}}>Items:</span>            
         </div>
     )
 }
