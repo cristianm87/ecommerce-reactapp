@@ -15,6 +15,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import './ItemDetail.css'
 import ItemCount from '../ItemCount/ItemCount'
+import Spinner from '../Spinner/Spinner';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -45,15 +46,6 @@ const useStyles = makeStyles((theme) => ({
 function ItemDetail({ product }) {
     console.log('item detail', product)
 
-    const [btnComprar, setTest] = useState(false)
-
-    //ItemCount
-    const onAdd=(cantidad) => {
-        console.log('agregar al carrito', cantidad)
-        setTest(true);
-
-    }
-
     const classes = useStyles();
 
     const [expanded, setExpanded] = React.useState(false);
@@ -65,7 +57,7 @@ function ItemDetail({ product }) {
     return (
         <>
         {product.length === 0 ? (
-            <h1>Cargando...</h1>
+        <Spinner />               
         ) : (
             <>
             {product.map((x) => {
@@ -89,7 +81,7 @@ function ItemDetail({ product }) {
                     </CardContent>
                     <CardContent> 
                         <div className="card-amount">
-                            <ItemCount onAdd={onAdd} stock={5} initial={1} item={x} btnComprar={btnComprar}/>
+                            <ItemCount stock={5} initial={1} item={x}/>
                         </div>
                     </CardContent>
                     <CardActions disableSpacing>

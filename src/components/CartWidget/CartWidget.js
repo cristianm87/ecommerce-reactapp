@@ -1,11 +1,12 @@
 import React, { useContext } from 'react'
-import { CartContext } from '../../CartContext';
+import { CartContext } from '../../context/CartContext';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import "./CartWidget.css"
 import { Link } from 'react-router-dom';
 
 
 function CartWidget() {
+
     const [state, setState] = useContext(CartContext)
     return (
         <div className="cart-widget-container">

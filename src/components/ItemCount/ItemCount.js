@@ -1,8 +1,9 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles';
 import './ItemCount.css'
 import { Link } from "react-router-dom";
+import { CartContext } from '../../context/CartContext'
 
 // MAKESTYLES PARA MATERIAL UI
 const useStyles = makeStyles({
@@ -28,55 +29,60 @@ const useStyles = makeStyles({
     }
 });
 
-function ItemCount({stock, initial, onAdd, item, btnComprar}) {
+function ItemCount({stock, initial,item}) {
 
     const classes = useStyles()
 
     console.log(item)
 
-    const [cant, setCant] = useState(initial)
-    
+    const [cont, setCant] = useState(initial)
+    const [btnComprar, setBtnComprar] = useState(false)
+
+    const myContext = useContext(CartContext)
+
+    const onAdd=(cont) => {
+        console.log('agregar al carrito', cont)
+        // myContext.addItem({item, cont})
+        setBtnComprar(true);
+    }
 
     const sumUno = () => {
-        if (cant < stock){
+        if (cont < stock){
             setCant((prevCant) => prevCant + 1)
-            
         }
     }
 
     const restaUno = () => {
-        if (cant > 1) {
-            setCant((prevCant) => prevCant  - 1);
+        if (cont > 1) {
+            setCant((prevCant) => prevCant - 1);
         }
     }
 
     return (
         <div className="item-count">
             <div className="item-count-wrapper">
-                <Button disabled={cant <= initial} onClick={restaUno} className={classes.btnMoreLess} variant="contained" color="secondary" size="small">
+                <Button disabled={cont <= initial} onClick={restaUno} className={classes.btnMoreLess} variant="contained" color="secondary" size="small">
                     -
                 </Button>
                 <div className="item-count-number-wrapper">
-                    <span className="item-count-number">{cant}</span>
+                    <span className="item-count-number">{cont}</span>
                 </div>
-                <Button disabled={cant >= stock} onClick={sumUno} className={classes.btnMoreLess} variant="contained" color="primary" size="small">
+                <Button disabled={cont >= stock} onClick={sumUno} className={classes.btnMoreLess} variant="contained" color="primary" size="small">
                     +
                 </Button>
             </div>
             <div>
                 { btnComprar === true ?
-                (
-                    <Link to="/cart">
-                        <Button className={classes.btnBuy} variant="contained" size="small">Terminar mi comprar</Button>
-                    </Link>                    
-                )
-
-                :
-                (
-                    <Button onClick={()=>onAdd(cant)} className={classes.btnAddToCart} variant="contained" size="small">Agregar al carrito</Button>
-                )
+                    (
+                        <Link to="/cart">
+                            <Button className={classes.btnBuy} variant="contained" size="small">Terminar mi comprar</Button>
+                        </Link>                    
+                    )
+                    :
+                    (
+                        <Button onClick={()=>onAdd(cont)} className={classes.btnAddToCart} variant="contained" size="small">Agregar al carrito</Button>
+                    )
             }
-
             </div>
         </div>
     )

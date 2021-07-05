@@ -11,12 +11,12 @@ import About from './views/About/About'
 import Contact from './views/Contact/Contact'
 import Categories from './views/Categories/Categories';
 import ItemDetailContainer from "./views/ItemDetailContainer/ItemDetailContainer";
-import { ItemsProvider } from "./CartContext"; //CartContext
+import { CartProvider } from "./context/CartContext"; //CartContext
 import Cart from "./views/Cart/Cart";
 
 function App() {
   return (
-    <ItemsProvider> {/*CardContext*/}
+    <CartProvider> {/*CardContext*/}
       <Router>
         <NavBar brand={'Marca'} />
         {/* <NavBarAlt /> */}
@@ -30,7 +30,7 @@ function App() {
         </Switch>
         <Footer />
       </Router>
-    </ItemsProvider>
+    </CartProvider>
   );
 }
 
