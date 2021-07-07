@@ -44,7 +44,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ItemDetail({ product }) {
-    console.log('item detail', product)
 
     const classes = useStyles();
 

@@ -1,7 +1,8 @@
 import React, { useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 import './Categories.css'
-import axios from 'axios'
+// import axios from 'axios'
+import { db } from '../../firebase/firebase';
 import Item from '../../components/Item/Item'
 import { Link } from 'react-router-dom'
 import '../../App.css'
@@ -10,19 +11,35 @@ function Categories() {
 
     const {id} = useParams()
     console.log(id)
-    
-    const [products, setProducts] = useState([])
+    //AXIOS:
+    // const [products, setProducts] = useState([])
 
-    console.log("productos:", products);
+    // useEffect(() => {
+    //     // setTimeout(() => {
+    //     //     console.log("Hello")
+    //     // }, 2000)
+
+    //     axios.get('../../data/productos.json').then((res) => setProducts(res.data.filter((element) => element.categoria.toLowerCase() === id )));
+    // }, [id]);
+
+    // FIREBASE:
+    const [products, setProducts] = useState([])
+    const getProducts = () => {
+
+        db.collection('items').onSnapshot((querySnapshot) => {
+            const docs = [];
+            querySnapshot.forEach((doc) => {
+                docs.push({ ...doc.data(), id: doc.id })
+            })
+            setProducts(docs.filter((element) => element.categoria.toLowerCase() === id))
+        })
+    };
 
     useEffect(() => {
-        // setTimeout(() => {
-        //     console.log("Hello")
-        // }, 2000)
+        getProducts()
+    }, [id])
 
-        axios.get('../../data/productos.json').then((res) => setProducts(res.data.filter((element) => element.categoria.toLowerCase() === id )));
-    }, [id]);
-    console.log(products)
+
     return (
         <section className="categories-container">
             <div className="container">
