@@ -1,0 +1,40 @@
+.cart-container {
+  background: var(--bg-color);
+  padding: 1rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.cart-container ul li {
+  border: 1px solid black;
+  display: block;
+}
+
+.cart-container ul li div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cart-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cart-list {
+  flex-grow: 3;
+}
+
+.cart-form {
+  background-color: rgb(78, 149, 211);
+  padding: 1rem;
+  border: 1px solid black;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+  color: black;
+}

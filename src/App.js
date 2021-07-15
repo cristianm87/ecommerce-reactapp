@@ -25,8 +25,8 @@ function App() {
           <Route path="/about" component={About} />
           <Route path='/contact' component={Contact} />
           <Route path='/category/:id' component={Categories} />
-          <Route path="/item/:id" component={ItemDetailContainer} />
-          <Route path="/cart" component={Cart} />
+          <Route path='/item/:id' component={ItemDetailContainer} />
+          <Route path='/cart' component={Cart} />
         </Switch>
         <Footer />
       </Router>
