@@ -9,16 +9,14 @@ export const CartProvider = ({defaultValue=[], children}) => {
 
     const [cart, setCart] = useState(defaultValue)
 
-    const addItem = (itemNew, cantidad) => {
-        console.log(itemNew)
-        console.log(cantidad)
+    const addItem = (itemNew, quantity) => {
         let productIndex= []
         productIndex = cart.findIndex(producto => itemNew.item.id === producto.itemNew.item.id)
         if (productIndex === -1) {
-            setCart(cart=>[...cart, {itemNew, cantidad}]);
+            setCart(cart=>[...cart, {itemNew, quantity}]);
         } else {
             let cartModify= [...cart];
-            cartModify[productIndex].itemNew.cantidad += itemNew.cantidad;
+            cartModify[productIndex].itemNew.quantity += itemNew.quantity;
             setCart(cartModify)
         }
     };
@@ -29,9 +27,10 @@ export const CartProvider = ({defaultValue=[], children}) => {
 
 
     const cantidadTotal =() =>{
-        // let cantidad=0;
-        // cart.forEach(({itemNew}) => { cantidad += parseInt(itemNew.cantidad)});
-        // return parseInt(cantidad);
+        let cantTotal=0;
+        cart.forEach(({itemNew}) => { cantTotal += parseInt(itemNew.quantity)});
+        console.log(cantTotal)
+        return parseInt(cantTotal);
     }
 
     const clear = () => {
@@ -43,7 +42,7 @@ export const CartProvider = ({defaultValue=[], children}) => {
     };
 
     return (
-        <CartContext.Provider value={{cart, addItem, removeItem, clear, cantidadTotal}}>
+        <CartContext.Provider value= {{cart, addItem, removeItem, clear, cantidadTotal}}>
             {children}
         </CartContext.Provider>
     )

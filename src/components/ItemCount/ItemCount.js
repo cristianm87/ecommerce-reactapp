@@ -36,20 +36,20 @@ function ItemCount({stock, initial, item}) {
     console.log(item)
 
     const [contador, setContador] = useState(initial)
-    const [cantidad, setCantidad]= useState(0);
+    const [quantity, setQuantity]= useState(0);
     const [btnComprar, setBtnComprar] = useState(false)
 
     const myContext = useContext(CartContext)
 
     const onAdd = (contador) => {
-        setCantidad(contador)
-        myContext.addItem({item, cantidad:contador})
+        setQuantity(contador)
+        myContext.addItem({item, quantity:contador})
         setBtnComprar(true);
     }
 
-    const sumUno = () => {setContador((prevCantidad) => prevCantidad + 1)}
+    const sumUno = () => {setContador((prevquantity) => prevquantity + 1)}
 
-    const restaUno = () => {setContador((prevCantidad) => prevCantidad - 1)}
+    const restaUno = () => {setContador((prevquantity) => prevquantity - 1)}
 
     return (
         <div className="item-count">

@@ -27,10 +27,13 @@ function Cart() {
                                     <li key={itemNew.item.id}>
                                         <div>
                                             <img src={itemNew.item.img} alt="" style={{width:"100px"}}/>
-                                            <span>{itemNew.item.shortDescription}</span>
-                                            <p>
-                                                Cantidad: {itemNew.item.quantity}
-                                                Total: ${itemNew.item.precio}
+                                            <p>&nbsp;{itemNew.item.shortDescription}</p>
+                                            <p> 
+                                                &nbsp;
+                                                Cantidad: <b>{itemNew.quantity}</b>
+                                                &nbsp;
+                                                Precio: <b>${itemNew.item.precio}</b>
+                                                &nbsp;
                                             </p>
                                             <button onClick={()=> removeItem(itemNew.item.id)}><IconCartRemove /></button>
                                         </div>
