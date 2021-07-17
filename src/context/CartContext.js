@@ -37,12 +37,18 @@ export const CartProvider = ({defaultValue=[], children}) => {
         setCart([])
     };
 
+    const precioTotal =() =>{
+        let total=0;
+        cart.forEach(({itemNew}) => { total +=parseInt(itemNew.item.precio) * parseInt(itemNew.quantity)});
+        return parseInt(total);
+    }
+
     const isInCart = () => {
 
     };
 
     return (
-        <CartContext.Provider value= {{cart, addItem, removeItem, clear, cantidadTotal}}>
+        <CartContext.Provider value= {{cart, addItem, removeItem, clear, cantidadTotal, precioTotal}}>
             {children}
         </CartContext.Provider>
     )

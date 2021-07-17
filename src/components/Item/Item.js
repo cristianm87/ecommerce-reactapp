@@ -32,11 +32,11 @@ function Item({products}) {
         <CardMedia
           className={classes.media}
           image={products.img}
-          title={products.img}
         />
         <CardContent>
           <Typography gutterBottom variant="subtitle1" component="h2">
-            {products.shortDescription}
+           {products.shortDescription} <br />
+           Precio: {products.precio}
           </Typography>
         </CardContent>
       </CardActionArea>
