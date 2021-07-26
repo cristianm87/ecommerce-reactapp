@@ -36,7 +36,7 @@ function Item({products}) {
         <CardContent>
           <Typography gutterBottom variant="subtitle1" component="h2">
            {products.shortDescription} <br />
-           Precio: {products.precio}
+           Precio: ${products.precio}
           </Typography>
         </CardContent>
       </CardActionArea>

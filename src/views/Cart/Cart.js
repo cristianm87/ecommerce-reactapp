@@ -11,36 +11,51 @@ function Cart() {
 
     const {cart, removeItem, precioTotal} = useContext(CartContext);
     const [orderId, setOrderId] = useState([])
+    
 
     const order = async (values) => {
         await db.collection('orders').doc().set(values)
-        console.log('nueva orden creada')
     };
 
+    // const getOrder = () => {
+    //     db.collection('orders').onSnapshot((querySnapshot) => {
+    //         const docs = [];
+    //         querySnapshot.forEach((doc) => {
+    //             docs.push({ ...doc.data(), id: doc.id })
+    //         })
+    //         setOrderId(docs)
+    //     })
+    // };
+
     const getOrder = () => {
-        db.collection('orders').onSnapshot((querySnapshot) => {
-            const docs = [];
-            querySnapshot.forEach((doc) => {
-                docs.push({ ...doc.data(), id: doc.id })
+        const docs = []
+        db.collection('orders')
+        .where('nombre', '==', 'Juan')
+        .get()
+        .then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+                docs.push({ ...doc.data(), id: doc.id})
             })
             setOrderId(docs)
         })
-    };
+    }
 
     useEffect(() => {
         getOrder()
+        // getOrder()
     }, [])
+
     return (
         <>
         <section className="cart-container">
             <div className="container">
-                <h1>Componente Cart</h1>
+                <h1>Carrito de compras</h1>
                 {cart.length === 0 ? (
                     <>  
                         <br />
-                        <h1 className="text-center">(No hay productos en el carrito)</h1>
+                        <h1 className="cart-info">(No hay productos en el carrito)</h1>
                         <br />
-                        <Link to="/">
+                        <Link className="link" to="/">
                             <Button variant="contained" color="primary" size="large">
                                 Seguir Comprando
                             </Button>
@@ -54,17 +69,19 @@ function Cart() {
                         <ul>
                             {cart.map(({itemNew})=>
                                 <li key={itemNew.item.id}>
-                                    <div>
-                                        <img src={itemNew.item.img} alt="" style={{width:"100px"}}/>
+                                    <div className="cart-li">
+                                        <div className="cart-img">
+                                            <img src={itemNew.item.img} alt={itemNew.item.img}/>                                            
+                                        </div>
                                         <p>&nbsp;{itemNew.item.shortDescription}</p>
                                         <p> 
                                             &nbsp;
-                                            Cantidad: <b>{itemNew.quantity}</b>
-                                            &nbsp;
                                             Precio: <b>${itemNew.item.precio}</b>
                                             &nbsp;
+                                            Cantidad: <b>{itemNew.quantity}</b>
+                                            &nbsp;
                                         </p>
-                                        <button onClick={()=> removeItem(itemNew.item.id)}><IconCartRemove /></button>
+                                        <button onClick={()=> removeItem(itemNew.item.id)}><IconCartRemove className="cart-icon-remove"/></button>
                                     </div>
                                 </li>
                             )}

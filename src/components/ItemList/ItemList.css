@@ -10,3 +10,9 @@ ul li {
 .item-list-link {
   text-decoration: none;
 }
+
+.itemlist-spinner {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}

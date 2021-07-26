@@ -43,7 +43,7 @@ function Categories() {
     return (
         <section className="categories-container">
             <div className="container">
-                <h1>Categoria: {id.charAt(0).toUpperCase() + id.slice(1)}</h1>
+                <h1>{id.charAt(0).toUpperCase() + id.slice(1)}</h1>
                 <div className="categories-wrapper">
                     <ul>
                         {products.map((product) => {

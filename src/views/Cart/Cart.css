@@ -6,8 +6,9 @@
 }
 
 .cart-container ul li {
-  border: 1px solid black;
   display: block;
+  -webkit-box-shadow: 5px 5px 15px 5px #000000;
+  box-shadow: 5px 5px 15px 5px #000000;
 }
 
 .cart-container ul li div {
@@ -32,9 +33,34 @@
   flex-grow: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
+  max-height: 250px;
 }
 
-.text-center {
+.cart-info {
   text-align: center;
-  color: black;
+}
+
+.cart-img {
+  height: 80px;
+  width: 100px;
+}
+
+.cart-img img {
+  width: 100%;
+  height: auto;
+}
+
+.cart-li {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.link {
+  text-decoration: none;
+}
+
+button {
+  color: red;
+  cursor: pointer;
 }

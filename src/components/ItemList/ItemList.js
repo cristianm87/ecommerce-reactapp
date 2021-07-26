@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Item from '../Item/Item';
 import './ItemList.css';
+import Spinner from '../Spinner/Spinner';
+
 // import axios from 'axios';
 //FIREBASE
 import { db } from '../../firebase/firebase';
@@ -43,17 +45,30 @@ function ItemList() {
     }, [])
 
     return (
-        <ul>
-            {products.map((product) => {
-                return (
-                    <li key={product.id}>
-                        <Link className="item-list-link" to={`/item/${product.id}`}>
-                            <Item products={product} />
-                        </Link>
-                    </li>
-                )
-            })}
-        </ul>
+        <>
+            {products.length === 0 ? 
+            (
+                <div className="itemlist-spinner">
+                    <Spinner />                    
+                </div>
+            )
+            :
+            (
+                <ul>
+                    {products.map((product) => {
+                        return (
+                            <li key={product.id}>
+                                <Link className="item-list-link" to={`/item/${product.id}`}>
+                                    <Item products={product} />
+                                </Link>
+                            </li>
+                        )
+                    })}
+                </ul>                
+            )
+            }
+        </>
+
     )
 }
 export default ItemList;
