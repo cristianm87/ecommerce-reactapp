@@ -20,20 +20,21 @@ function ItemDetailContainer({ match }) {
     // FIREBASE:
     const [products, setProducts] = useState([])
 
-    const getProducts = () => {
-
-        db.collection('items').onSnapshot((querySnapshot) => {
-            const docs = [];
-            querySnapshot.forEach((doc) => {
-                docs.push({ ...doc.data(), id: doc.id})
-            })
-            setProducts(docs.filter((element)=> element.id === charId))
-        })
-    };
 
     useEffect(() => {
+
+        const getProducts = () => {
+        
+            db.collection('items').onSnapshot((querySnapshot) => {
+                const docs = [];
+                querySnapshot.forEach((doc) => {
+                    docs.push({ ...doc.data(), id: doc.id})
+                })
+                setProducts(docs.filter((element)=> element.id === charId))
+            })
+        };
         getProducts()
-    }, [])
+    }, [charId])
     
 
     return (

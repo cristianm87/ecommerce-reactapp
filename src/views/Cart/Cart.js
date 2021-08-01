@@ -1,49 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import './Cart.css';
 import { CartContext } from '../../context/CartContext';
 import IconCartRemove from '@material-ui/icons/RemoveShoppingCartOutlined';
 import Form from '../../components/Form/Form';
-import { db } from '../../firebase/firebase';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 
 function Cart() {
 
     const {cart, removeItem, precioTotal} = useContext(CartContext);
-    const [orderId, setOrderId] = useState([])
-    
-
-    const order = async (values) => {
-        await db.collection('orders').doc().set(values)
-    };
-
-    // const getOrder = () => {
-    //     db.collection('orders').onSnapshot((querySnapshot) => {
-    //         const docs = [];
-    //         querySnapshot.forEach((doc) => {
-    //             docs.push({ ...doc.data(), id: doc.id })
-    //         })
-    //         setOrderId(docs)
-    //     })
-    // };
-
-    const getOrder = () => {
-        const docs = []
-        db.collection('orders')
-        .where('nombre', '==', 'Juan')
-        .get()
-        .then(function (querySnapshot) {
-            querySnapshot.forEach(function (doc) {
-                docs.push({ ...doc.data(), id: doc.id})
-            })
-            setOrderId(docs)
-        })
-    }
-
-    useEffect(() => {
-        getOrder()
-        // getOrder()
-    }, [])
 
     return (
         <>
@@ -86,22 +51,10 @@ function Cart() {
                                 </li>
                             )}
                         </ul>
-                        <h2>Total: ${precioTotal()}</h2>
-                        <ul>
-                            {orderId.map(x => (
-                                <li 
-                                    key={x.id}>
-                                    Hola {x.nombre} <br />
-                                    su numero de orden es: <br />
-                                    <b>{x.id} </b>
-                                </li>
-                                
-                            ))}                                 
-                        </ul>
-                    
+                        <h2>Total de la compra: ${precioTotal()}</h2>
                     </div>
                     <div className="cart-form">
-                        <Form order={order}/>
+                        <Form/>
                     </div>
                 </div>
                 )

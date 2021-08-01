@@ -18,7 +18,6 @@ function NavBar({ brand }) {
                 </div>
                 <ul>
                     <Link className="link" to="/">Home</Link>
-                    {/* <Link className="link" to="/about">About</Link> */}
                     <li className="link submenu">
                         <span>Categories</span>
                         <ul>

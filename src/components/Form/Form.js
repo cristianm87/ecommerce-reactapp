@@ -1,19 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
+import {Link} from 'react-router-dom';
+import { CartContext } from '../../context/CartContext';
+import { db } from '../../firebase/firebase';
+
+import './Form.css'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: '100px',
+      maxWidth: '300px',
       display:'block',
     },
   },
 }));
 
-function Form({order}) {
+function Form() {
+
+  const {order, ordenCliente} = useContext(CartContext)
+
   const classes = useStyles();
 
   const initialState = {
@@ -28,16 +36,23 @@ function Form({order}) {
     setValues({ ...values, [name]: value });
   };
 
-  const handleOnSubmit = (e) => {
-    e.preventDefault()
+  const handleOnClick = (e) => {
     order(values)
+    sendOrder(ordenCliente)
     setValues({ ...initialState })
+    console.log(ordenCliente)
   };
+
+
+  const sendOrder = async (ordenCliente) => {
+    await db.collection('orders').doc().set(ordenCliente);
+  }
 
   const [values, setValues] = useState(initialState)
 
   return (
-    <form onSubmit={handleOnSubmit} className={classes.root} noValidate autoComplete="off">
+    <form className={classes.root} noValidate autoComplete="off">
+      <p>Complete sus datos para finalizar la compra</p>
       <div>
         <TextField 
           onChange={handleOnChange}
@@ -65,7 +80,9 @@ function Form({order}) {
           type="email"
           value={values.email}
         />
-        <Button type="submit" variant="contained" color="primary">Enviar</Button>
+        <Link className="Link" to="/order">
+          <Button onClick={handleOnClick} type="submit" variant="contained" color="primary">Enviar</Button>
+        </Link>
       </div>
     </form>
   );

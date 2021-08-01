@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react'
-
+import { useEffect } from 'react';
 
 // crear el contexto
 export const CartContext = createContext({});
@@ -8,12 +8,13 @@ export const CartContext = createContext({});
 export const CartProvider = ({defaultValue=[], children}) => {
 
     const [cart, setCart] = useState(defaultValue)
+    const [ordenCliente, setOrdenCliente] = useState({})
 
-    const addItem = (itemNew, quantity) => {
+    const addItem = (itemNew) => {
         let productIndex= []
         productIndex = cart.findIndex(producto => itemNew.item.id === producto.itemNew.item.id)
         if (productIndex === -1) {
-            setCart(cart=>[...cart, {itemNew, quantity}]);
+            setCart(cart=>[...cart, {itemNew}]);
         } else {
             let cartModify= [...cart];
             cartModify[productIndex].itemNew.quantity += itemNew.quantity;
@@ -25,11 +26,9 @@ export const CartProvider = ({defaultValue=[], children}) => {
         setCart (cart.filter(({itemNew})=> itemNew.item.id !== id));
     };
 
-
     const cantidadTotal =() =>{
         let cantTotal=0;
         cart.forEach(({itemNew}) => { cantTotal += parseInt(itemNew.quantity)});
-        console.log(cantTotal)
         return parseInt(cantTotal);
     }
 
@@ -43,12 +42,16 @@ export const CartProvider = ({defaultValue=[], children}) => {
         return parseInt(total);
     }
 
-    const isInCart = () => {
+    const order = (datosCliente) => {
+        setOrdenCliente({...datosCliente, ...[cart]})
+    }
 
-    };
+    useEffect(() => {
+    console.log(ordenCliente)
 
+    })
     return (
-        <CartContext.Provider value= {{cart, addItem, removeItem, clear, cantidadTotal, precioTotal}}>
+        <CartContext.Provider value= {{cart, addItem, removeItem, clear, cantidadTotal, precioTotal, order, ordenCliente}}>
             {children}
         </CartContext.Provider>
     )

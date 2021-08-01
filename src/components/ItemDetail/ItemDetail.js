@@ -1,19 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import { 
     CardHeader, 
     CardMedia, 
     CardContent,
-    CardActions,
-    Collapse,
-    IconButton,
     Typography } from '@material-ui/core';
 import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import './ItemDetail.css'
 import ItemCount from '../ItemCount/ItemCount'
 import Spinner from '../Spinner/Spinner';
@@ -48,12 +41,6 @@ function ItemDetail({ product }) {
 
     const classes = useStyles();
 
-    const [expanded, setExpanded] = React.useState(false);
-
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
-
     return (
         <>
         {product.length === 0 ? (
@@ -74,9 +61,9 @@ function ItemDetail({ product }) {
                     />
                     <CardContent>
                         <Typography variant="subtitle1" color="initial" component="p">
-                            Precio: ${x.precio}<br/>
                             Marca: {x.marca}<br/>
-                            Modelo: {x.modelo}
+                            Modelo: {x.modelo}<br/>
+                            Precio: ${x.precio}
                         </Typography>
                     </CardContent>
                     <CardContent> 
@@ -84,32 +71,6 @@ function ItemDetail({ product }) {
                             <ItemCount stock={5} initial={1} item={x}/>
                         </div>
                     </CardContent>
-                    <CardActions disableSpacing>
-                        <IconButton aria-label="add to favorites">
-                            <FavoriteIcon />
-                        </IconButton>
-                        <IconButton aria-label="share">
-                            <ShareIcon />
-                        </IconButton>
-                        <IconButton
-                            className={clsx(classes.expand, {
-                                [classes.expandOpen]: expanded,
-                            })}
-                            onClick={handleExpandClick}
-                            aria-expanded={expanded}
-                            aria-label="show more"
-                        >
-                        <ExpandMoreIcon />
-                        </IconButton>
-                    </CardActions>
-                    <Collapse in={expanded} timeout="auto" unmountOnExit>
-                        <CardContent>
-                            <Typography paragraph>Más detalles</Typography>
-                            <Typography paragraph>
-                                {x.longDescription}
-                            </Typography>
-                        </CardContent>
-                    </Collapse>
                 </Card>
                 );
             })}</>

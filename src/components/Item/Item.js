@@ -42,9 +42,6 @@ function Item({products}) {
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          Comprár
-        </Button>
-        <Button size="small" color="primary">
           Más detalles
         </Button>
       </CardActions>

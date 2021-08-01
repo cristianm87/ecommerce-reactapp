@@ -20,6 +20,7 @@
 .cart-wrapper {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 1rem;
 }
 
 .cart-list {
@@ -29,7 +30,7 @@
 .cart-form {
   background-color: rgb(78, 149, 211);
   padding: 1rem;
-  border: 1px solid black;
+  margin-top: 1rem;
   flex-grow: 1;
   display: flex;
   align-items: center;

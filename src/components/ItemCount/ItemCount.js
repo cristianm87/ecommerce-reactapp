@@ -33,34 +33,30 @@ function ItemCount({stock, initial, item}) {
 
     const classes = useStyles()
 
-    console.log(item)
-
-    const [contador, setContador] = useState(initial)
-    const [quantity, setQuantity]= useState(0);
+    const [quantity, setQuantity] = useState(initial)
     const [btnComprar, setBtnComprar] = useState(false)
 
     const myContext = useContext(CartContext)
 
-    const onAdd = (contador) => {
-        setQuantity(contador)
-        myContext.addItem({item, quantity:contador})
+    const onAdd = () => {
+        myContext.addItem({item, quantity})
         setBtnComprar(true);
     }
 
-    const sumUno = () => {setContador((prevquantity) => prevquantity + 1)}
+    const sumUno = () => {setQuantity((prevquantity) => prevquantity + 1)}
 
-    const restaUno = () => {setContador((prevquantity) => prevquantity - 1)}
+    const restaUno = () => {setQuantity((prevquantity) => prevquantity - 1)}
 
     return (
         <div className="item-count">
             <div className="item-count-wrapper">
-                <Button disabled={contador <= initial | btnComprar} onClick={restaUno} className={classes.btnMoreLess} variant="contained" color="secondary" size="small">
+                <Button disabled={quantity <= initial || btnComprar} onClick={restaUno} className={classes.btnMoreLess} variant="contained" color="secondary" size="small">
                     -
                 </Button>
                 <div className="item-count-number-wrapper">
-                    <span className="item-count-number">{contador}</span>
+                    <span className="item-count-number">{quantity}</span>
                 </div>
-                <Button disabled={contador >= stock | btnComprar } onClick={sumUno} className={classes.btnMoreLess} variant="contained" color="primary" size="small">
+                <Button disabled={quantity >= stock || btnComprar } onClick={sumUno} className={classes.btnMoreLess} variant="contained" color="primary" size="small">
                     +
                 </Button>
             </div>
@@ -68,12 +64,12 @@ function ItemCount({stock, initial, item}) {
                 { btnComprar === true ?
                     (
                         <Link to="/cart">
-                            <Button className={classes.btnBuy} variant="contained" size="small">Terminar la comprar</Button>
+                            <Button className={classes.btnBuy} variant="contained" size="small">Ir al carro</Button>
                         </Link>                    
                     )
                     :
                     (
-                        <Button onClick={()=>onAdd(contador)} className={classes.btnAddToCart} variant="contained" size="small">Agregar al carrito</Button>
+                        <Button onClick={()=>onAdd(quantity)} className={classes.btnAddToCart} variant="contained" size="small">Agregar al carrito</Button>
                     )
             }
             </div>
