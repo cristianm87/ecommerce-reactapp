@@ -3,3 +3,7 @@ form > p {
   font-weight: 600;
   font-size: 1.2rem;
 }
+
+.form-button {
+  text-decoration: none;
+}

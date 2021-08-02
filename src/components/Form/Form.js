@@ -1,12 +1,10 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
 import {Link} from 'react-router-dom';
-import { CartContext } from '../../context/CartContext';
-import { db } from '../../firebase/firebase';
-
 import './Form.css'
+import { CartContext } from '../../context/CartContext';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,9 +16,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Form() {
+function Form({orderClient}) {
 
-  const {order, ordenCliente} = useContext(CartContext)
+  const {clienteActual} = useContext(CartContext);
 
   const classes = useStyles();
 
@@ -36,17 +34,11 @@ function Form() {
     setValues({ ...values, [name]: value });
   };
 
-  const handleOnClick = (e) => {
-    order(values)
-    sendOrder(ordenCliente)
+  const handleOnClick = () => {
+    orderClient(values)
+    clienteActual(values)
     setValues({ ...initialState })
-    console.log(ordenCliente)
   };
-
-
-  const sendOrder = async (ordenCliente) => {
-    await db.collection('orders').doc().set(ordenCliente);
-  }
 
   const [values, setValues] = useState(initialState)
 
@@ -54,11 +46,11 @@ function Form() {
     <form className={classes.root} noValidate autoComplete="off">
       <p>Complete sus datos para finalizar la compra</p>
       <div>
-        <TextField 
+        <TextField
           onChange={handleOnChange}
           required
           name="nombre"
-          id="form-input-name" 
+          id="form-input-name"
           label="Nombre"
           type="text"
           value={values.nombre}  />
@@ -80,9 +72,18 @@ function Form() {
           type="email"
           value={values.email}
         />
-        <Link className="Link" to="/order">
-          <Button onClick={handleOnClick} type="submit" variant="contained" color="primary">Enviar</Button>
-        </Link>
+        { 
+          values.nombre.length > 0 && values.telefono.length > 0 && values.email.length > 0? 
+          (
+            <Link className="Link form-button" to="/order" >
+              <Button onClick={handleOnClick} type="button" variant="contained" color="primary">Enviar</Button>
+            </Link>             
+          )
+          : 
+          (
+            null
+          )
+        }
       </div>
     </form>
   );

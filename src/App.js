@@ -3,7 +3,6 @@ import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-// import NavBarAlt from "./components/NavBarAlt/NavBarAlt";
 
 //VIEWS
 import Home from './views/Home/Home'

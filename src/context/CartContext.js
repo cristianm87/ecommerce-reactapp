@@ -1,14 +1,11 @@
 import React, { createContext, useState } from 'react'
-import { useEffect } from 'react';
 
-// crear el contexto
 export const CartContext = createContext({});
-
 
 export const CartProvider = ({defaultValue=[], children}) => {
 
     const [cart, setCart] = useState(defaultValue)
-    const [ordenCliente, setOrdenCliente] = useState({})
+    const [cliente, setCliente] = useState({})
 
     const addItem = (itemNew) => {
         let productIndex= []
@@ -42,16 +39,12 @@ export const CartProvider = ({defaultValue=[], children}) => {
         return parseInt(total);
     }
 
-    const order = (datosCliente) => {
-        setOrdenCliente({...datosCliente, ...[cart]})
+    const clienteActual =(datosCliente) => {
+        setCliente({...datosCliente})
     }
 
-    useEffect(() => {
-    console.log(ordenCliente)
-
-    })
     return (
-        <CartContext.Provider value= {{cart, addItem, removeItem, clear, cantidadTotal, precioTotal, order, ordenCliente}}>
+        <CartContext.Provider value= {{cart, addItem, removeItem, clear, cantidadTotal, precioTotal, clienteActual, cliente}}>
             {children}
         </CartContext.Provider>
     )

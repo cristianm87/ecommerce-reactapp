@@ -33,10 +33,10 @@ function ItemCount({stock, initial, item}) {
 
     const classes = useStyles()
 
+    const myContext = useContext(CartContext)
+
     const [quantity, setQuantity] = useState(initial)
     const [btnComprar, setBtnComprar] = useState(false)
-
-    const myContext = useContext(CartContext)
 
     const onAdd = () => {
         myContext.addItem({item, quantity})
@@ -61,7 +61,8 @@ function ItemCount({stock, initial, item}) {
                 </Button>
             </div>
             <div>
-                { btnComprar === true ?
+                { 
+                    btnComprar === true ?
                     (
                         <Link to="/cart">
                             <Button className={classes.btnBuy} variant="contained" size="small">Ir al carro</Button>
@@ -71,7 +72,7 @@ function ItemCount({stock, initial, item}) {
                     (
                         <Button onClick={()=>onAdd(quantity)} className={classes.btnAddToCart} variant="contained" size="small">Agregar al carrito</Button>
                     )
-            }
+                }
             </div>
         </div>
     )

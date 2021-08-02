@@ -1,3 +1,33 @@
-.order {
-  color: black;
+.order-container {
+  background: var(--bg-color);
+  padding: 1rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.order-container span {
+  font-size: 1.5rem;
+  color: rgb(139, 236, 100);
+}
+
+.order-container ul {
+  border: 1px solid black;
+  max-width: 800px;
+}
+
+.order-container ul li {
+  display: block;
+}
+
+.order-container .order-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.order-container .cart-li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

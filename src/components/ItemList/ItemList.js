@@ -21,6 +21,7 @@ function ItemList() {
             })
             setProducts(docs)
         })
+        
     };
 
     useEffect(() => {
@@ -51,8 +52,8 @@ function ItemList() {
             )
             }
         </>
-
     )
 }
+
 export default ItemList;
 

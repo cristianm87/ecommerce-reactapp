@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import logo from './logo.png'
 
 function NavBar({ brand }) {
+    
     return (
         <nav>
             <div className="container nav-container-flex">

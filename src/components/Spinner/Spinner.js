@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Spinner() {
+
   const classes = useStyles();
 
   return (
@@ -19,6 +20,7 @@ function Spinner() {
       <CircularProgress color="secondary" />
     </div>
   );
+  
 }
 
 export default Spinner

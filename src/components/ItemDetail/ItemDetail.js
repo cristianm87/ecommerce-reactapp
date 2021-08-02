@@ -1,9 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import { 
-    CardHeader, 
-    CardMedia, 
+import {
+    CardHeader,
+    CardMedia,
     CardContent,
     Typography } from '@material-ui/core';
 import { red } from '@material-ui/core/colors';
@@ -43,39 +43,44 @@ function ItemDetail({ product }) {
 
     return (
         <>
-        {product.length === 0 ? (
-        <Spinner />               
-        ) : (
-            <>
-            {product.map((x) => {
-                return (
-                <Card key={x.id} className={classes.root}>
-                    <CardHeader
-                        title={x.shortDescription}
-                        subheader=" "
-                    />
-                    <CardMedia
-                        className={classes.media}
-                        image={x.img}
-                        title=""
-                    />
-                    <CardContent>
-                        <Typography variant="subtitle1" color="initial" component="p">
-                            Marca: {x.marca}<br/>
-                            Modelo: {x.modelo}<br/>
-                            Precio: ${x.precio}
-                        </Typography>
-                    </CardContent>
-                    <CardContent> 
-                        <div className="card-amount">
-                            <ItemCount stock={5} initial={1} item={x}/>
-                        </div>
-                    </CardContent>
-                </Card>
-                );
-            })}</>
+            {
+            product.length === 0 ? 
+            (
+                <Spinner />               
+            ) 
+            : 
+            (
+                <>
+                    {product.map((x) => {
+                        return (
+                        <Card key={x.id} className={classes.root}>
+                            <CardHeader
+                                title={x.shortDescription}
+                                subheader=" "
+                            />
+                            <CardMedia
+                                className={classes.media}
+                                image={x.img}
+                                title=""
+                            />
+                            <CardContent>
+                                <Typography variant="subtitle1" color="initial" component="p">
+                                    Marca: {x.marca}<br/>
+                                    Modelo: {x.modelo}<br/>
+                                    Precio: ${x.precio}
+                                </Typography>
+                            </CardContent>
+                            <CardContent> 
+                                <div className="card-amount">
+                                    <ItemCount stock={5} initial={1} item={x}/>
+                                </div>
+                            </CardContent>
+                        </Card>
+                        );
+                    })}
+                </>
             )
-        }
+            }
         </>
     )
 }

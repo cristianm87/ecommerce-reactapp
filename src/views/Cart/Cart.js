@@ -5,18 +5,32 @@ import IconCartRemove from '@material-ui/icons/RemoveShoppingCartOutlined';
 import Form from '../../components/Form/Form';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import { db } from '../../firebase/firebase';
+import firebase from 'firebase/app';
 
 function Cart() {
 
     const {cart, removeItem, precioTotal} = useContext(CartContext);
 
+    const orderClient = (datosCliente) => {
+        const ordenCliente = {}
+        ordenCliente.date= firebase.firestore.Timestamp.fromDate(new Date());
+        ordenCliente.datosCliente = datosCliente
+        ordenCliente.itemsCliente = cart
+        sendOrder(ordenCliente)
+    }
+
+    // Envia a Firebase
+    const sendOrder = async (values) => {
+        await db.collection('orders').doc().set(values);
+    }
+
     return (
-        <>
         <section className="cart-container">
             <div className="container">
                 <h1>Carrito de compras</h1>
                 {cart.length === 0 ? (
-                    <>  
+                    <>
                         <br />
                         <h1 className="cart-info">(No hay productos en el carrito)</h1>
                         <br />
@@ -54,15 +68,13 @@ function Cart() {
                         <h2>Total de la compra: ${precioTotal()}</h2>
                     </div>
                     <div className="cart-form">
-                        <Form/>
+                        <Form orderClient={orderClient}/>
                     </div>
                 </div>
                 )
                 }
             </div>
         </section>
-
-    </>
     )
 }
 
